@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+
+public class RandomNumber {
+	public static void GetNumber()
+	{
+		int randomNum;
+		int Cc=0, Cl=0, Ch=0;
+		boolean Winner;
+		boolean High;
+		boolean Low;
+		Low=false;
+		High=false;
+		Winner=false;
+		Scanner input = new Scanner(System.in);
+
+
+		int Cont=1;
+		do
+		{
+			System.out.print("Guess what the random number generator is generating.(between 0 and 10)");
+			int userinput=input.nextInt();
+			randomNum = 0 + (int)(Math.random()*10); 
+			if (userinput==randomNum)
+			{
+				Winner=true;
+			}
+			else if (userinput>randomNum)
+			{
+				High=true;
+			}
+			else if (userinput<randomNum)
+			{
+				Low=true;
+			}
+			if (Winner)
+			{
+				System.out.println("You are correct!");
+				System.out.print("The dice actually rolled a ");
+				System.out.println(randomNum);
+				Cc++;
+			}
+			else if (Low)
+			{
+				System.out.println("You are too low!");
+				System.out.print("The dice actually rolled a ");
+				System.out.println(randomNum);
+				Cl++;
+			}
+			else if (High)
+			{
+				System.out.println("You are too high!");
+				System.out.print("The dice actually rolled a ");
+				System.out.println(randomNum);
+				Ch++;
+			}
+
+			System.out.println("Continue? (1=yes  0=no)");
+			Cont = input.nextInt();
+		} while (Cont!=0);
+		System.out.println("The number correct is: ");
+		System.out.println(Cc);
+		System.out.println("The number counted too low is: ");
+		System.out.println(Cl);
+		System.out.println("The number counted too high is: ");
+		System.out.println(Ch);
+		//System.out.println(loop);
+		
+	}
+
+}
