@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 
 public class RandomNumber {
-	public static void GetNumber()
+	public static void GetANumber_Between_1_and_10()
 	{
 		int randomNum;
 		int Cc=0, Cl=0, Ch=0;
@@ -65,7 +65,6 @@ public class RandomNumber {
 		System.out.println("The number counted too high is: ");
 		System.out.println(Ch);
 		//System.out.println(loop);
-		
 	}
 
 }
