@@ -1,9 +1,10 @@
 
-public class GuessANumber 
-{
-	public static void main(String [] args)
+
+public class GuessANumber {
+	public static void main(String[] args)
 	{
 		RandomNumber myRandomNumber = new RandomNumber();
-		myRandomNumber.GetNumber();
+		RandomNumber.GetANumber_Between_1_and_10();
+		
 	}
 }
