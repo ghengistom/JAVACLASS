@@ -73,3 +73,5 @@ class RandomNumber
 	
 	
 }
+
+// You're missing a Constructor with the 2 parameters, Tom.  User needs to instantiate a RandomNumber object and specify low/high at the same time
