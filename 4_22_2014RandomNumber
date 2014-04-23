@@ -24,12 +24,12 @@ public class GuessANumber
 				if (answer > (random1)) 
 				{
 				
-					System.out.printf("You are too high\n the system number is %d \n thanks for playing",random1);
+					System.out.printf("You are high\n the system number is %d \n bye",random1);
 
 				} 
 				else if (answer < (random1)) 
 				{
-					System.out.printf("too low\n the system number is %d \n thanks for playing", random1);
+					System.out.printf("You are low\n the system number is %d \n bye", random1);
 
 				}
 		
@@ -37,16 +37,21 @@ public class GuessANumber
 
 			if (answer == random1)
 			{
-				System.out.println("congrats you guessed correctly\n thanks for playing\n");
+				System.out.println("You guessed correctly\n bye\n");
 			}
-			System.out.printf("do you want to play again 1 for yes and 0 for no");
+			System.out.printf("play again? (1 for yes and 0 for no)");
 			cont = input.nextInt();
 		}
 }}
 
-	
-	
-	import java.util.Random;
+
+
+
+
+
+
+
+import java.util.Random;
 
 class RandomNumber 
 {
@@ -76,3 +81,5 @@ class RandomNumber
 	}
 
 }
+
+	
