@@ -65,13 +65,13 @@ class RandomNumber
 		randNumMod= randNum%2;
 		return randNumMod;
 	}
+
 	public int GetANumber(int x)
 	{
-		Random r = new Random();                                        
-		randNum = 0 + (int)(Math.random()*100);
-		randNumMod= randNum%2;
-		return randNumMod;
+		x=100;
+		return x;
 	}
+	
 	public int GetANumber(int x, int y)
 	{
 		Random r = new Random();                                        
