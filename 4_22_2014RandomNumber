@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class GuessANumber
+{
+
+	public static void main(String[] args)
+	{
+		int cont = 1;
+		Scanner input;
+		while (cont != 0) 
+		{
+			RandomNumber randomnumber = new RandomNumber();
+		
+			int answer;
+			int random1;
+			input = new Scanner(System.in);
+			random1 = randomnumber.GetANumber();
+
+			System.out.printf("Pick a number between 0 and 10");
+			answer = input.nextInt();
+
+			if (answer != random1) 
+			{
+				if (answer > (random1)) 
+				{
+				
+					System.out.printf("You are too high\n the system number is %d \n thanks for playing",random1);
+
+				} 
+				else if (answer < (random1)) 
+				{
+					System.out.printf("too low\n the system number is %d \n thanks for playing", random1);
+
+				}
+		
+			}
+
+			if (answer == random1)
+			{
+				System.out.println("congrats you guessed correctly\n thanks for playing\n");
+			}
+			System.out.printf("do you want to play again 1 for yes and 0 for no");
+			cont = input.nextInt();
+		}
+}}
+
+	
+	
+	import java.util.Random;
+
+class RandomNumber 
+{
+	int randNum = 0;
+	int randNumMod;
+
+	public int GetANumber()
+	{
+		Random r = new Random();                                        
+		randNum = 0 + (int)(Math.random()*100);
+		randNumMod= randNum%2;
+		return randNumMod;
+	}
+	public int GetANumber(int x)
+	{
+		Random r = new Random();                                        
+		randNum = 0 + (int)(Math.random()*100);
+		randNumMod= randNum%2;
+		return randNumMod;
+	}
+	public int GetANumber(int x, int y)
+	{
+		Random r = new Random();                                        
+		randNum = 0 + (int)(Math.random()*100);
+		randNumMod= randNum%2;
+		return randNumMod;
+	}
+
+}
