@@ -86,3 +86,5 @@ class RandomNumber
 
 
 }
+
+// This one uses the correct constructor.  Make sure you understand that there can be more than 1 constructors and when to use which constructor
