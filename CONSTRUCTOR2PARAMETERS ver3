@@ -1,0 +1,88 @@
+import java.util.Scanner; //gets scanner library
+
+public class GuessANumber 
+{
+	public static void main(String[] args)
+	{
+		int low;
+		int high;
+		int randomNum;
+		int NumberInBetween;
+		Scanner input;
+		input = new Scanner(System.in);
+		
+		System.out.println("Select a low Number: ");
+		//low= RandomNumberObject.GetALow();
+		System.out.print("Select a high Number: ");
+		low=input.nextInt();
+		high=input.nextInt();
+		RandomNumber RandomNumberObject= new RandomNumber(low, high);                //Getting use of constructor
+		//low=RandomNumberObject.GetALow();
+		//high=RandomNumberObject.GetAHigh();
+		//Activate Constructor
+		//Object RandomNumberObject22 = new RandomNumber(low, high);
+		//RandomNumberObject.RandomNumber(low, high);
+		//RandomNumberObject.GetALow();
+		//RandomNumberObject.GetAHigh();
+
+		RandomNumberObject.GetALow();
+		System.out.print("The low number is: ");
+		System.out.println(low);
+
+		RandomNumberObject.GetAHigh();
+		System.out.print("The high number is: ");
+		System.out.println(high);
+
+		NumberInBetween=RandomNumberObject.GetANumber(low, high);
+		System.out.print("The number in between is: ");
+		System.out.println(NumberInBetween);
+
+
+	}
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+import java.util.Random;
+
+
+class RandomNumber 
+{
+	int randomNum;
+	int low;
+	int high;
+	int lo;
+	int hi;
+
+
+	public int GetANumber(int lo, int hi)
+	{
+
+		randomNum = lo + (int)(Math.random()*(hi-lo));
+		return randomNum;
+	}
+	public int GetALow()
+	{
+		return low;
+
+	}
+	public int GetAHigh()
+	{
+
+		return high;
+	}
+	public RandomNumber(int lo, int hi)
+	{
+		lo=low;
+		hi=high;
+
+	}
+
+
+
+
+}
