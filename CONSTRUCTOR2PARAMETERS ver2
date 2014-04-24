@@ -64,7 +64,7 @@ public class GuessANumber
 		RandomNumber RandomNumberObject= new RandomNumber();
 		low=RandomNumberObject.GetALow();
 		high=RandomNumberObject.GetAHigh();
-		RandomNumberObject.RandomNumber(low, high);
+		RandomNumberObject.RandomNumber(low, high);   // UTILIZE THE CONSTRUCTOR
 		RandomNumberObject.GetALow();
 		RandomNumberObject.GetAHigh();
 
