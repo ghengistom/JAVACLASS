@@ -1,0 +1,80 @@
+
+public class Odd_Even_Game 
+{
+	public static void main(String[] args)
+	{	//Initialize VAriables
+			int Number=0;
+			int RandomNumber;
+			Boolean Win= null;
+		//Create new object
+			GameFunctions GameFunctionsObject = new GameFunctions();
+		//Calls DisplayMessage method of class GameFunctions
+			GameFunctionsObject.DisplayMessage();
+		//Gets user's input
+			GameFunctionsObject.GetUser(Number);
+		//This creates random number
+			RandomNumber=GameFunctionsObject.Rand_Number_Method();
+		//This takes the random number and compares it to the user input	
+			GameFunctionsObject.getWinOrLoss(RandomNumber, Number);
+		//This displays the results
+			//GameFunctionsObject.DisplayWinOrLoss(Win);
+	}
+}
+
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class GameFunctions 
+{
+	int RandomNumber;
+	int RandNumModded;
+	Boolean win;
+	Scanner UserInput = new Scanner(System.in);
+	int HoldUser_Input;
+	
+	GameFunctions()
+	{
+		Boolean win = null;
+		int UserInput = 0;
+		int HoldUser_Input = 0;
+		
+	}
+	public int Rand_Number_Method()
+	{
+		//Random r = new Random();                                        
+		RandomNumber = 0 + (int)(Math.random()*100);
+		RandNumModded= RandomNumber%2;
+		return RandNumModded;
+	}
+	public void DisplayMessage()
+	{
+		System.out.println("Try and guess if the number is odd or even.");
+	}
+	public void GetUser(int HoldUser_Input)
+	{
+		
+		//int HoldUser_Input;
+		Scanner UserInput = new Scanner(System.in);
+		HoldUser_Input=UserInput.nextInt();
+	}
+
+	public void getWinOrLoss(int HoldUser_Input, int RandNumModded)
+	{
+		//Boolean win;
+		 if(HoldUser_Input == RandNumModded )
+         {
+			win = true;
+			System.out.println("You guessed correctly");
+         }
+		 else
+		 	{
+			 win = false;
+			 System.out.println("You guessed incorrectly");
+		 	}
+		 	
+	}
+
+
+}
