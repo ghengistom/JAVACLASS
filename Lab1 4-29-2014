@@ -1,0 +1,35 @@
+
+public class DiceProgram 
+{
+	public static void main(String[] args)
+	{
+		int x,y;
+		Dice DiceObject = new Dice();
+		x=DiceObject.Throw();
+		System.out.print("This is the Throw method: ");
+		System.out.println(x);
+		System.out.println("This is the value method: ");
+		y=DiceObject.Value();
+		System.out.println(y);
+	}
+}
+
+
+
+
+
+import java.util.Random;
+
+public class Dice 
+{
+	int a;
+	int Throw()
+	{
+		a= 0 + (int)(Math.random()*6);
+		return a;
+	}
+	int Value()
+	{
+		return a;
+	}
+}
