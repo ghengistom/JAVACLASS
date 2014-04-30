@@ -1,0 +1,58 @@
+import java.util.Random;
+
+
+public class DiceProgram 
+{
+	
+	public static void main(String[] args)
+	{
+		int x,y = 0;
+		Dice DiceObject = new Dice();
+		for (int i=0; i<3; ++i)
+		DiceObject.Throw();  //this randomizes numbers
+		System.out.print("This is the Throw method: ");
+		DiceObject.displayThrow();
+		System.out.println("The total is : ");
+		y=DiceObject.ThrowTotal();
+		//y=DiceObject.Throw(x);
+		//compute average
+		float average;
+		average = y/3;
+		System.out.println(y);
+		//display average
+		System.out.println("The average is ");
+		System.out.println(average);
+	}
+}
+
+
+
+
+import java.util.Random;
+
+public class Dice 
+{
+	int a,b,total;
+	Dice()
+	{
+		int a,b=0,total=0;
+	}
+	int Throw()
+	{
+			a= 1 + (int)(Math.random()*6);
+			return a;
+	}
+	void displayThrow()
+	{
+		for(int i=0; i<3; ++i)
+		System.out.println(a);
+	}
+	int ThrowTotal()
+	{
+		for (int i=0; i<3; ++i)
+		{
+			total+=a;
+		}
+		return total;
+	}
+}
