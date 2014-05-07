@@ -1,0 +1,94 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessMain 
+{
+	
+	public static void main(String[] args)
+	{
+		//initialize variables
+			int rolls = 0;
+			int userinput;
+			int DiceValue=0;
+			Scanner input;
+		// print 	
+			System.out.print("Select number of rolls ");
+			input = new Scanner(System.in);
+			userinput = input.nextInt();
+		//create object Dice1
+			Dice666 Dice1 = new Dice666();
+	
+		
+		// Save value of dice
+			for (int i=1; i<=userinput; ++i)
+			{
+				Scanner inputchep;
+				input = new Scanner(System.in);
+				//display to user
+					System.out.print("Guess what the dice is adding to ");
+					int TomGuess = input.nextInt();
+					
+					DiceValue = Dice1.Throw(userinput);
+					//creat variable to count win
+						int DicesAdded;
+						DicesAdded = Dice1.AddDice(userinput);
+						
+						//win counter
+							int win=0;
+							int lose=0;
+					if (DicesAdded/100>=(1-(TomGuess/DicesAdded)/100) || DicesAdded/100<=(1-(TomGuess/DicesAdded)/100) )
+					{
+						win++;
+					}
+					else 
+					{
+						lose++;
+					}
+					System.out.print("This is your ");
+					System.out.print(i);
+					System.out.print(" attempt");
+					System.out.print(" this time you rolled a ");
+					System.out.println(DiceValue);
+					
+					System.out.println("Your total wins are ");
+					System.out.println(win);
+					System.out.println("Your total losses are ");
+					System.out.println(lose);
+			}
+			
+			
+			//
+	}
+	
+
+}
+
+
+
+
+public class Dice666
+{
+	void Display()
+	{
+		System.out.print("How many dices do you want to roll?");
+	}
+	int Throw(int rolls)
+	{
+		int a = 0;
+		for (int i=0; i<rolls; ++i)
+			a= 1 + (int)(Math.random()*6);
+			return a;
+	}
+	int AddDice(int a)
+	{
+		int total = 0;
+		
+		total += a;
+		
+		return total;
+	}
+	
+	
+	
+	
+}
