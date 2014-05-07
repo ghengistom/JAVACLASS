@@ -67,6 +67,14 @@ public class GuessMain
 							System.out.println(PercentDiff*100);
 							System.out.println("You are given a %10 margin of error ");
 							
+							
+						// display what the n number of dices rolled
+							System.out.println("This is what each individual dice rolled");
+							for(int i=0; i<Dices; ++i)
+							{
+								System.out.println(Array[i]);
+							}
+							
 						// CONTINUE?
 							System.out.print("Continue ? (1= yes/0 = no) ");
 							Continue = input.nextInt();
@@ -94,4 +102,36 @@ public class GuessMain
 					
 				
 	}
+}
+
+
+
+
+import java.util.Random;
+
+public class Dice666
+{
+	void Display()
+	{
+		System.out.print("How many dices do you want to roll?");
+	}
+	int Throw(int rolls)
+	{
+		int a = 0;
+		for (int i=0; i<rolls; ++i)
+			a= 1 + (int)(Math.random()*6);
+			return a;
+	}
+	int AddDice(int a)
+	{
+		int total = 0;
+		
+		total += a;
+		
+		return total;
+	}
+	
+	
+	
+	
 }
