@@ -36,7 +36,8 @@ public class GuessMain
 						//win counter
 							int win=0;
 							int lose=0;
-					if (DicesAdded/100>=(1-(TomGuess/DicesAdded)/100) || DicesAdded/100<=(1-(TomGuess/DicesAdded)/100) )
+					if (DicesAdded*.10)/100)>=(1-(TomGuess/DicesAdded)/100))  || (DicesAdded*(.10)/100)<=(1-(TomGuess/DicesAdded)/100) )
+
 					{
 						win++;
 					}
@@ -91,4 +92,4 @@ public class Dice666
 	
 	
 	
-}
+}//
