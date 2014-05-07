@@ -99,6 +99,8 @@ public class GuessMain
 					System.out.println(win);
 					System.out.println("Your total losses are ");
 					System.out.println(lose);
+					System.out.print("Total number of games played are: ");
+					System.out.println(gamesplayed);
 					
 				
 	}
