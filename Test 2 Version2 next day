@@ -21,6 +21,7 @@ public class GuessMain
 			// create while loop so user can play as much as he/she wants
 				while (Continue!=0)
 				{
+					
 					// print 	
 						System.out.print("Select how many dices you want to roll ");
 						input = new Scanner(System.in);
@@ -81,17 +82,20 @@ public class GuessMain
 							if (Continue == 1)
 							{
 								Continue = 1;
+								gamesplayed++;
+								System.out.println("\n");
 							}
 							else if (Continue == 0)
 							{
 								Continue = 0;
+								System.out.println("\n");
 							}
 							else
 							{
 								System.out.print("SELECT A 0 or 1 ");
 								break;
 							}
-							gamesplayed++;
+							
 				}
 				
 				//display total wins and losses
@@ -105,8 +109,6 @@ public class GuessMain
 				
 	}
 }
-
-
 
 
 import java.util.Random;
