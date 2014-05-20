@@ -1,0 +1,162 @@
+import java.util.Scanner;
+
+public class GuessMain 
+{
+	
+	public static void main(String[] args)
+	{
+		//initialize variables
+			float Dices = 0;
+			float Array[]= new float[30];
+			Scanner input;
+			//input = new Scanner(System.in);
+				int Continue=1;
+			
+			
+			//win counter
+				int win=0;
+				int lose=0;
+				int gamesplayed=1;
+				int TomGuess;
+			// create while loop so user can play as much as he/she wants
+				while (Continue!=0)
+				{
+					
+					// print 	
+						System.out.print("Select how many dices you want to roll ");
+						input = new Scanner(System.in);
+						Dices = input.nextInt();
+					//create object Dice1
+						Dice666 TrippleDice = new Dice666();
+				
+					//roll the dice by creating an object/instance of class Dice666
+					//save values of the rolls into an array get total as well
+						float total=0;
+						for(int i=0; i<Dices; ++i)
+						{
+							Array[i] = Dice666.Throw(Dices);
+							total+= Array[i];
+						}
+						
+					
+							
+						//Ask user to make a guess what the n number of dices added up to
+							//display to user
+							System.out.print("Guess what the dice is adding to ");
+							TomGuess = input.nextInt();
+							
+						//make variable for percent difference then count win/losses
+							float PercentDiff = Math.abs((TomGuess-total)/total); 
+							if ((PercentDiff)>0.1)
+							{
+								lose++;
+							}
+							else 
+							{
+								win++;
+							}
+							
+						//display number of attempts show what the dices added to
+							System.out.print("This is your ");
+							System.out.print(gamesplayed);
+							System.out.println(" attempt");
+							System.out.println(" The dices added up to ");
+							System.out.println(total);
+							
+						//display percentage difference
+							System.out.print("Your percentage difference was %");
+							System.out.println(PercentDiff*100);
+							System.out.println("You are given a %10 margin of error ");
+							
+							
+						// display what the n number of dices rolled
+							System.out.println("This is what each individual dice rolled");
+							for(int i=0; i<Dices; ++i)
+							{
+								System.out.println(Array[i]);
+							}
+							
+						// CONTINUE?
+							System.out.print("Continue ? (1= yes/0 = no) ");
+							Continue = input.nextInt();
+							if (Continue == 1)
+							{
+								Continue = 1;
+								gamesplayed++;
+								System.out.println("\n");
+							}
+							else if (Continue == 0)
+							{
+								Continue = 0;
+								System.out.println("\n");
+							}
+							else
+							{
+								System.out.print("SELECT A 0 or 1 ");
+								break;
+							}
+							
+				}
+				
+				//display total wins and losses
+					System.out.println("\n\nYour total wins are ");
+					System.out.println(win);
+					System.out.println("Your total losses are ");
+					System.out.println(lose);
+					System.out.print("Total number of games played are: ");
+					System.out.println(gamesplayed);
+					
+				
+	}
+}
+
+
+
+
+
+
+
+
+import java.util.Random;
+
+public class Dice666
+{
+	int count=0;
+	//build constructor
+		public Dice666()
+		{
+			int dices;
+			dices = 0;
+		}
+		
+		// this is the display funcion
+		void Display()
+		{
+			System.out.print("How many dices do you want to roll?");
+		}
+	// method to roll dice
+		static float Throw(float rolls)
+		{
+			int a = 0;
+			for (int i=0; i<3; ++i)
+				a= 1 + (int)(Math.random()*6);
+				 return a/3;
+		}
+	// method to add dice
+		int AddDice(int a)
+		{
+			int total = 0;
+			
+			total += a;
+			
+			return total;
+		}
+		
+	// method to count Throws as the static method is invoked
+		int CountThrow(int a)
+		{
+			count ++;
+			return count;
+		}
+		
+}
