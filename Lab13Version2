@@ -1,0 +1,84 @@
+import java.util.Random;
+
+public class Dice 
+{
+	int a,b,total;
+	Dice()
+	{
+		int a,b=0,total=0;
+	}
+	int Throw(int bounces)
+	{
+		for (int i=0; i<bounces; ++i)
+			a= 1 + (int)(Math.random()*6);
+			return a;
+	}
+	void displayThrow()
+	{
+		for(int i=0; i<3; ++i)
+		System.out.println(a);
+	}
+	int ThrowTotal()
+	{
+		for (int i=0; i<3; ++i)
+		{
+			total+=a;
+		}
+		return total;
+	}
+}
+
+public class TrippleDice extends Dice
+{
+	// creat an array to store each dice value for displaying
+		//int size=3;
+		//int A[] = new int[(Integer) null];
+	// end array creation
+		float sum;
+		int a,b,total;
+		int bounces = 3;
+	
+
+	//build constructor to initialize variables
+		TrippleDice()
+		{
+			int a,b=0,total=0;
+		}
+		float Throw()
+		{
+			for (int i=0; i<3; ++i)
+				{
+					//int sum;
+					a = 1 + (int)(Math.random()*6);
+					System.out.print(a);
+					System.out.print(" ");
+					total = a++;
+					
+				}
+				//print each dice
+				return total;
+				
+				
+		}
+}
+
+public class MainMethod 
+{
+	static int bounces;
+	public static void main(String[] args)
+	{
+		// creat an array to store each dice value for displaying
+			int size=30;
+			int A[] = new int[size];
+		// create an object from TrippleDice
+			TrippleDice TrippleDiceObject = new TrippleDice();
+		
+		//utizize throw method of TrippleDiceObject
+			float x = TrippleDiceObject.Throw();
+		
+		//print out the average
+			System.out.print("The average is :");
+			System.out.print(x);
+			
+	}
+}
