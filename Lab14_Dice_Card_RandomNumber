@@ -1,0 +1,48 @@
+
+public class Card 
+{
+	int RandNumGen()
+	{
+		int a = 1 + (int)(Math.random()*10);
+		return a;
+	}
+}
+
+public class Dice 
+{
+	int RandNumGen()
+	{
+		int a = 1 + (int)(Math.random()*6);
+		return a;
+	}
+	
+}
+
+
+
+public class MainMehtod 
+{
+	public static void main(String[] args)
+	{
+		Dice DiceObject = new Dice();
+		Card CardObject = new Card();
+		
+		int DiceNum;
+		DiceNum = DiceObject.RandNumGen();
+		//display dice
+			System.out.println("This is your dice object");
+			System.out.println(DiceNum);
+		
+		int Cards[] = new int[30];
+		//display card object
+		System.out.println("THs is your card object");
+		for (int i=0; i<3; ++i)
+		{Cards[i] = CardObject.RandNumGen();}
+		//display your cards
+		for (int i=0; i<3; ++i)
+		{
+			System.out.print(Cards[i]);
+			System.out.println(" ");
+		}
+	}
+}
