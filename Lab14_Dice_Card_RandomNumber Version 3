@@ -1,0 +1,61 @@
+public class GameInterface
+{
+	int RandNumGen()
+	{
+		int a = 1 + (int)(Math.random()*6);
+		return a;
+	}
+
+}
+
+public class Dice extends GameInterface
+{
+	public int RandNumGen()
+	{
+		int a = 1 + (int)(Math.random()*6);
+		return a;
+		
+	}
+	
+}
+
+public class Card extends GameInterface 
+{
+	public int RandNumGen()
+	{
+		int a = 1 + (int)(Math.random()*10);
+		return a;
+	}
+}
+
+public class MainMethodPoly
+{
+	
+	
+	public static void main(String[] args)
+	{
+			int holdnumber[] = {0,0};
+			
+		GameInterface RandNum[] = new GameInterface[2];
+		//RandomNumberGenerator CardObject = new Card();
+		
+		// variables to hold object
+			RandNum[0] = new Dice();
+			RandNum[1] = new Card();
+		//end make variables to hold object
+			
+		//setup polymorphic array to loop through each index
+			for (int i=0; i<2; i++)
+			{
+				holdnumber[i] = RandNum[i].RandNumGen();
+			}
+			
+		//display these values storeed in to array
+			for (int i=0; i<2; i++)
+			{
+				System.out.print(holdnumber[i] + " ");
+				
+			}
+	
+	}
+}
