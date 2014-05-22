@@ -47,7 +47,7 @@ public class RandomNumberGenerator
 
 }
 
-public class Dice extends RandomNumberGenerator implements GameInterface
+public class Dice implements GameInterface
 {
 	public int RandNumGen()
 	{
@@ -58,7 +58,7 @@ public class Dice extends RandomNumberGenerator implements GameInterface
 	
 }
 
-public class Card extends RandomNumberGenerator implements GameInterface 
+public class Card implements GameInterface 
 {
 	public int RandNumGen()
 	{
