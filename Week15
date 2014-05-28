@@ -1,0 +1,60 @@
+public class Dice
+{
+	int total;
+	
+	
+	int Throw(int bounce) throws Exception
+	{
+		if (bounce >3)
+		{
+			throw new Exception("that is too many dices");
+		}
+		else 
+		{
+			total = 0;
+			for (int i=0; i<bounce; ++i)
+			{
+				int a = 1 + (int)(Math.random()*6);
+				System.out.printf("%d\n", a);
+				total = total + a ;
+			}
+		}
+		System.out.printf("This is the total %d\n", total);
+		return total;
+		
+	}
+
+}
+
+import java.util.Scanner;
+
+public class MainMethod 
+{
+	
+	
+	public static void main(String[] args)
+	{
+		int count=0;
+		Scanner input = new Scanner(System.in);
+		while (count<5)
+		{
+			try
+			{
+				count++;
+				System.out.print("Choose how many dice you want to roll");
+				int NumDices = input.nextInt();
+				Dice RollDice = new Dice();
+				RollDice.Throw(NumDices);
+			}
+			catch (Exception e)
+			{
+				System.err.printf("Error caught");
+			}
+			
+			
+			
+			count++;
+		}
+	
+	}
+}
