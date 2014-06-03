@@ -1,0 +1,58 @@
+
+public class MainMethodWk15 
+{
+	public static void main(String[] args)
+	{
+
+				
+		System.out.print("First");
+			//Throw Dice 25 times in seperate threads
+				Runnable T1 = new Dice();
+			//create variable to hold value of Dice1
+				int Dice1;
+				for(int i=0; i<25; ++i)
+				{
+					Dice1 = ((Dice) T1).Roll();
+					System.out.print(Dice1);
+				}
+				
+		System.out.print("Second");
+		
+			//Throw Dice 25 times in  thread 2
+				Runnable T2 = new Dice();
+			//create variable to store dice2
+				int Dice2;
+				for(int i=0; i<25; ++i)
+				{
+					Dice2 = ((Dice) T2).Roll();
+					System.out.print(Dice2);
+				}
+		System.out.println("Complete");
+	}
+}
+
+
+
+public class Dice implements Runnable
+{
+	private int Dice;
+	
+	Dice()
+	{
+		Dice = 0;
+	}
+	
+	
+	int Roll()
+	{
+		Dice = 1 + (int)(Math.random()*6);
+		return Dice;
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}
