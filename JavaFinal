@@ -6,18 +6,20 @@ public class MainMethod
 	{
 		Scanner UserInput = new Scanner(System.in);
 		int HoldUser_Input;
-		
-		
-		System.out.print("Guess what the number is...");
-		HoldUser_Input = UserInput.nextInt();
-		DoublceDice MakeNumObject = new DoublceDice();
-		// make variable to hold this number
 		int DiceValue;
 		int Continue = 1;
 		int win = 0;
 		int lose = 0;
+		
 		while (Continue !=0)
 		{
+			System.out.print("Guess what the number is...");
+			HoldUser_Input = UserInput.nextInt();
+			DoublceDice MakeNumObject = new DoublceDice();
+			// make variable to hold this number
+			
+		
+		
 			DiceValue = MakeNumObject.GetValue();
 			
 			System.out.print("You rolled a ");
