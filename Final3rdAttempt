@@ -22,7 +22,7 @@ public class MainMethod
 		{
 			System.out.print("Guess what the number is...");
 			HoldUser_Input = UserInput.nextInt();
-			DoubleDice MakeNumObject = new DoubleDice();
+			DoublceDice MakeNumObject = new DoublceDice();
 			// make variable to hold this number
 
 			DiceValue = MakeNumObject.GetValue();
@@ -48,14 +48,14 @@ public class MainMethod
 
 	//THis is for the BLACK JACK GAME
 
-	
-		
+
+
 		int Draw = 0;
 		int ContinueBlack = 1;
 		int NewCard;
 		int NewCardComputer;
 		//make variable to store 3 numbers added
-		
+
 		int Size =2;
 		int[] Number = new int[Size];
 		Card CardObject = new Card(Number);
@@ -82,21 +82,35 @@ public class MainMethod
 							WinsBlackJack++;
 							ContinueBlack =0;
 						}
-						
+
 				//loop to store 3 numbers into array user
 				//System.out.print("Your first two cards are : ");
-				int Hit = 1;	
+				int Hit = 1;
+				int HitsCounter = 0;
 		//hit statement
 				while (Hit !=2)
 				{
-					
+
 						System.out.println("Would You Like to hit? (1=yes 2=no) ");
-	
+
 						Hit = UserInput.nextInt();
-	
+
 					if (Hit == 1)
 					{
 						NewCard = CardObject.RandomNumber();
+						HitsCounter++;
+						//make loop to hold additional cards
+						for (int i=2; i<2+HitsCounter; ++i)
+						{
+							UserBlackJack[i] = NewCard;
+						}
+						
+						
+						for (int i=0; i<2+HitsCounter; ++i)
+						{
+							System.out.print("The User now has the following cards: ");
+							System.out.println(UserBlackJack[i]);
+						}
 						System.out.print("Your new card is a: ");
 						System.out.println(NewCard);
 						TotalUser += NewCard;
@@ -107,6 +121,7 @@ public class MainMethod
 					{
 						System.out.print("You Win!! ");
 						WinsBlackJack++;
+						break;
 					}
 					else if (TotalUser > 21)
 					{
@@ -114,12 +129,12 @@ public class MainMethod
 						LoseBlackJack++;
 						break;
 					}
-					
+
 				}
 		//end hit statemnt
-			
-	
-				
+
+
+
 				//loop to store 3 number for computer 
 				for (int i=0; i<2; ++i)
 				{
@@ -130,7 +145,7 @@ public class MainMethod
 				}
 					System.out.print("The Computer total is now: ");
 					System.out.println(TotalComputer);
-				
+
 					while(TotalComputer <21 && TotalComputer < TotalUser)
 					{
 						System.out.print("The Computer is going to hit");
@@ -140,7 +155,11 @@ public class MainMethod
 						TotalComputer += NewCardComputer;
 						System.out.print("The Computer total is now: ");
 						System.out.println(TotalComputer);
-									
+						if(TotalComputer>21 && TotalUser<=21)
+						{
+							System.out.println("You Win!!");
+						}
+
 					}
 					if (TotalUser>= TotalComputer && TotalUser<21)
 					{
@@ -151,49 +170,48 @@ public class MainMethod
 					{
 						WinsBlackJack++;
 						System.out.println("You win!");
-						
+
 					}
 					else if (TotalComputer >21 && TotalUser > 21)
 					{
 						TieBlack++;
-						
+
 					}
 					else if (TotalComputer <21 && TotalUser > 21)
 					{
 						System.out.println("You Lose!!");
 						LoseBlackJack++;
-						
+
 					}
 					else if (TotalComputer > TotalUser && TotalComputer==21)
 					{
 						System.out.println("You Lose!!");
 						LoseBlackJack++;
-						
+
 					}
 					else if (TotalComputer > TotalUser && TotalComputer<21)
 					{
 						System.out.println("You Lose!!");
 						LoseBlackJack++;
 					}
-					
+
 				//else Draw++;
 				//{System.out.print("Draw");}
 			//Ask user if they would like to continue
 				System.out.print("Would you like to continue? (yes=1, no = 0): ");
 				ContinueBlack = UserInput.nextInt();
-	
+
 			}
-	
+
 		System.out.print("The total wins in black jack are : ");  
 		System.out.println(WinsBlackJack);
 		System.out.print("The total losses in black jack are : ");
 		System.out.println(LoseBlackJack);
 		System.out.print("The total ties in black jack are : ");
 		System.out.println(TieBlack);
-		
+
 	}
 }
-
 import java.util.Random;
 
 public class RandomNumber 
