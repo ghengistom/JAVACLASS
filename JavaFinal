@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class MainMethod 
+{
+	public static void main(String[] args)
+	{
+		Scanner UserInput = new Scanner(System.in);
+		int HoldUser_Input;
+		
+		
+		System.out.print("Guess what the number is...");
+		HoldUser_Input = UserInput.nextInt();
+		DoublceDice MakeNumObject = new DoublceDice();
+		// make variable to hold this number
+		int DiceValue;
+		int Continue = 1;
+		int win = 0;
+		int lose = 0;
+		while (Continue !=0)
+		{
+			DiceValue = MakeNumObject.GetValue();
+			
+			System.out.print("You rolled a ");
+			System.out.println(DiceValue);
+			if (DiceValue == HoldUser_Input)
+			{
+				win++;
+			}
+			else lose++;
+			System.out.print("Would you like to continue? (1=yes 0 = no) ");
+			Continue = UserInput.nextInt();
+		}
+		
+		System.out.print("Your total wins are: ");
+		System.out.println(win);
+		System.out.print("Your total losses are: ");
+		System.out.println(lose);
+	}
+}
+
+public class DoublceDice extends Dice 
+{
+	
+		int RandomNumber()
+		{
+			int a = 1 + (int)(Math.random()*12);
+			return a;
+		}
+		int GetValue()
+		{
+			DoublceDice NumGen = new DoublceDice();
+			return NumGen.RandomNumber();
+		}
+	
+}
+
+public class Dice extends RandomNumber
+{
+	int RandomNumber()
+	{
+		int a = 1 + (int)(Math.random()*6);
+		return a;
+	}
+}
+
+import java.util.Random;
+
+public class RandomNumber
+{
+	int RandomNumber()
+	{
+		int a = 1 + (int)(Math.random()*12);
+		return a;
+	}
+
+	
+}
+
