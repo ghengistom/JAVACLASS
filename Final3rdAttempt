@@ -4,6 +4,9 @@ public class MainMethod
 {
 	public static void main(String[] args)
 	{
+		int WinsBlackJack=0;
+		int LoseBlackJack=0;
+		int TieBlack = 0;
 		int TotalUser = 0;
 		int TotalComputer = 0;
 		int UserBlackJack[] = new int[10];
@@ -45,9 +48,7 @@ public class MainMethod
 
 	//THis is for the BLACK JACK GAME
 
-		int WinsBlackJack=0;
-		int LoseBlackJack=0;
-		int TieBlack = 0;
+	
 		
 		int Draw = 0;
 		int ContinueBlack = 1;
@@ -139,35 +140,42 @@ public class MainMethod
 						TotalComputer += NewCardComputer;
 						System.out.print("The Computer total is now: ");
 						System.out.println(TotalComputer);
+									
 					}
+					if (TotalUser>= TotalComputer && TotalUser<21)
+					{
+						WinsBlackJack++;
+						System.out.println("You win!!");
+					}
+					else if (TotalComputer>21 && TotalUser<21)
+					{
+						WinsBlackJack++;
+						System.out.println("You win!");
 						
-				
-	
-	
-				if (TotalUser>= TotalComputer && TotalUser<21)
-				{
-					WinsBlackJack++;
-					System.out.println("You win!!");
-				}
-				else if (TotalComputer>21 && TotalUser<21)
-				{
-					WinsBlackJack++;
-					System.out.println("You win!");
-				}
-				else if (TotalComputer >21 && TotalUser > 21)
-				{
-					TieBlack++;
-				}
-				else if (TotalComputer <21 && TotalUser > 21)
-				{
-					System.out.println("You Lose!!");
-					LoseBlackJack++;
-				}
-				else if (TotalComputer > TotalUser && TotalComputer<21)
-				{
-					System.out.println("You Lose!!");
-					LoseBlackJack++;
-				}
+					}
+					else if (TotalComputer >21 && TotalUser > 21)
+					{
+						TieBlack++;
+						
+					}
+					else if (TotalComputer <21 && TotalUser > 21)
+					{
+						System.out.println("You Lose!!");
+						LoseBlackJack++;
+						
+					}
+					else if (TotalComputer > TotalUser && TotalComputer==21)
+					{
+						System.out.println("You Lose!!");
+						LoseBlackJack++;
+						
+					}
+					else if (TotalComputer > TotalUser && TotalComputer<21)
+					{
+						System.out.println("You Lose!!");
+						LoseBlackJack++;
+					}
+					
 				//else Draw++;
 				//{System.out.print("Draw");}
 			//Ask user if they would like to continue
@@ -176,7 +184,7 @@ public class MainMethod
 	
 			}
 	
-		System.out.print("The total wins in black jack are : ");
+		System.out.print("The total wins in black jack are : ");  
 		System.out.println(WinsBlackJack);
 		System.out.print("The total losses in black jack are : ");
 		System.out.println(LoseBlackJack);
