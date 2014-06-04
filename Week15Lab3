@@ -1,0 +1,138 @@
+import java.util.Arrays;
+public class MainMethodWk15 
+{
+	public static void main(String[] args)
+	{
+
+
+		System.out.print("First");
+			//Throw Dice 25 times in seperate threads
+				Runnable T1 = new Dice();
+				Runnable T2 = new Dice();
+			//create variable to hold value of Dice1
+				int Dice1 = 0;
+				int array1[] = new int[10];
+				int array2[] = new int[10];
+			//create object Array from TomArray to store values
+				TomArray TomArrayObject = new TomArray(Dice1);
+				
+				TomArrayObject.add(3);
+				
+				for(int i=0; i<3; ++i)
+				{
+					array1[i] = ((Dice) T1).Roll();
+					System.out.print("This is the value of the dice: ");
+					System.out.println(array1[i]);
+					//array1[i] = Dice1;
+					//System.out.println(array1[i]);
+				}
+				
+			//create object Array from TomArray to store values
+				TomArray TomArrayObject2 = new TomArray(Dice1);
+				TomArrayObject2.add(3);
+				
+				
+				System.out.print("Second");
+				//create variable to store dice2
+				int Dice2;
+				
+				for(int i=0; i<3; ++i)
+				{
+					Dice2 = ((Dice) T2).Roll();
+					System.out.print(Dice2);
+					array2[3] = Dice2;
+					System.out.println(array2[i]);
+				}
+
+		
+		System.out.println("Complete");
+	}
+}
+
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class TomArray 
+{
+	private final int[] array; //the integer array to be shared
+	private int writeIndex = 0; // this is the index of next element to be written
+	private final static Random generator = new Random();
+	
+	// contrsuct a ARRAy of a certain size
+	public TomArray(int size)
+	{
+		size = 3;
+		array = new int[size];
+	} //this ends the contructor 
+	
+	//add a value to the shared array
+	public synchronized void add( int value)
+	{
+		int position = writeIndex; // stoer the write index
+		
+		try
+		{
+			//put the thread to sleep for 0-499 milliseconds
+			Thread.sleep(generator.nextInt(500));
+		
+		} //end try
+		catch (InterruptedException ex)
+		{
+			ex.printStackTrace();
+		} //end catch
+		//put value in the appropriate element
+		array[ position ] = value;
+		++writeIndex; // increment index of element to be writtten next
+		
+	}
+}
+
+
+
+public class Dice implements Runnable
+{
+	private int Dice;
+
+	Dice()
+	{
+		Dice = 0;
+	}
+
+
+	int Roll()
+	{
+		Dice = 1 + (int)(Math.random()*6);
+		return Dice;
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+}
+
+public class MyThread implements Runnable
+{
+	private final long counter;
+
+	MyThread(long counter)
+	{
+		this.counter = counter;
+	}
+
+
+	@Override
+	public void run()
+	{
+		long sum = 0; 
+		for (long i = 1; i<counter; i++)
+		{
+			sum +=i;
+		}
+		System.out.println(sum);
+	}
+}
+
