@@ -1,0 +1,336 @@
+import java.util.Scanner;
+
+public class MainMethod 
+{
+	public static void main(String[] args)
+	{
+		int WinsBlack = 0;
+		int LoseBlack = 0;
+		int TieBlack = 0;
+		int TotalUser = 0;
+		int TotalComputer = 0;
+		int UserBlackJack[] = new int[10];
+		int ComputerBlackJack[] = new int[10];
+		Scanner UserInput = new Scanner(System.in);
+		int HoldUser_Input;
+		int DiceValue;
+		int Continue = 1;
+		int win = 0;
+		int lose = 0;
+
+		while (Continue !=0)
+		{
+			System.out.print("Guess what the number is...");
+			HoldUser_Input = UserInput.nextInt();
+			DoublceDice MakeNumObject = new DoublceDice();
+			// make variable to hold this number
+
+			DiceValue = MakeNumObject.GetValue();
+
+			System.out.print("You rolled a ");
+			System.out.println(DiceValue);
+			if (DiceValue == HoldUser_Input)
+			{
+				win++;
+			}
+			else lose++;
+			System.out.print("Would you like to continue? (1=yes 0 = no) ");
+			Continue = UserInput.nextInt();
+		}
+		//end while
+
+		System.out.print("Your total wins are: ");
+		System.out.println(win);
+		System.out.print("Your total losses are: ");
+		System.out.println(lose);
+
+
+
+	//THis is for the BLACK JACK GAME
+		
+		//this is a thread to check for win or lose
+			CheckConditions CheckObject = new CheckConditions();
+			Runnable T1 = new CheckConditions();
+			int ContinueBlack = 1;
+			int NewCard;
+			int NewCardComputer;
+			//make variable to store 3 numbers added
+	
+			int Size =2;
+			int[] Number = new int[Size];
+			Card CardObject = new Card(Number);
+			
+			while (ContinueBlack != 0)
+			{
+				TotalUser = 0;
+				TotalComputer = 0;
+				System.out.println("Time For Black Jack ");
+				for (int i=0; i<2; ++i)
+				{
+					UserBlackJack[i] = CardObject.RandomNumber();
+					TotalUser += UserBlackJack[i];
+				}
+				for (int i=0; i<2; ++i)
+				{
+					System.out.print("The User got the following cards: ");
+					System.out.println(UserBlackJack[i]);
+				}
+					System.out.print("Your total is: ");
+					System.out.println(TotalUser);
+					if(TotalUser ==21)
+						{
+							System.out.println("You win!!");
+							//WinsBlackJack++;
+							ContinueBlack =0;
+						}
+
+				//loop to store 3 numbers into array user
+				//System.out.print("Your first two cards are : ");
+				int Hit = 1;
+				int HitsCounter = 0;
+				
+				//before hitting check to see if win or lose with thread
+					//((CheckConditions) T1).Check(TotalComputer, TotalUser, WinsBlack, LoseBlack, TieBlack);
+				
+		//hit statement
+				while (Hit !=2)
+				{
+
+						System.out.println("Would You Like to hit? (1=yes 2=no) ");
+
+						Hit = UserInput.nextInt();
+
+					if (Hit == 1)
+					{
+						NewCard = CardObject.RandomNumber();
+						HitsCounter++;
+						//make loop to hold additional cards
+						for (int i=2; i<2+HitsCounter; ++i)
+						{
+							UserBlackJack[i] = NewCard;
+						}
+						
+						
+						for (int i=0; i<2+HitsCounter; ++i)
+						{
+							System.out.print("The User now has the following cards: ");
+							System.out.println(UserBlackJack[i]);
+						}
+						System.out.print("Your new card is a: ");
+						System.out.println(NewCard);
+						TotalUser += NewCard;
+						System.out.print("Your total is: ");
+						System.out.println(TotalUser);
+					}
+					if (TotalUser == 21)
+					{
+						System.out.print("You Win!! ");
+						//WinsBlackJack++;
+						break;
+					}
+					else if (TotalUser > 21)
+					{
+						System.out.println("You Busted!! ");
+						//LoseBlackJack++;
+						break;
+					}
+					//check if win/lose with thread again
+					//((CheckConditions) T1).Check(TotalComputer, TotalUser, WinsBlack, LoseBlack, TieBlack);
+
+				}
+		//end hit statemnt
+
+
+
+				//loop to store 3 number for computer 
+				for (int i=0; i<2; ++i)
+				{
+					ComputerBlackJack[i] = CardObject.RandomNumber();
+					System.out.print("The Computer got the following cards: ");
+					System.out.println(ComputerBlackJack[i]);
+					TotalComputer += ComputerBlackJack[i];
+				}
+					System.out.print("The Computer total is now: ");
+					System.out.println(TotalComputer);
+
+					while(TotalComputer <21 && TotalComputer < TotalUser)
+					{
+						System.out.print("The Computer is going to hit");
+						System.out.print(" and got ");
+						NewCardComputer = CardObject.RandomNumber();
+						System.out.println(NewCardComputer);
+						TotalComputer += NewCardComputer;
+						System.out.print("The Computer total is now: ");
+						System.out.println(TotalComputer);
+						if(TotalComputer>21 && TotalUser<=21)
+						{
+							System.out.println("You Win!!");
+						}
+
+					}
+					
+					//this is where you would check for you conditions
+					Runnable T2 = new CheckConditions();
+					
+					((CheckConditions) T2).Check(TotalUser, TotalComputer);
+				//	CheckObject.Check(TotalComputer, TotalUser);
+					//((CheckConditions) T1).Check(TotalComputer, TotalUser, WinsBlack, LoseBlack, TieBlack);
+					WinsBlack = CheckObject.ScoreWins();
+					LoseBlack = CheckObject.ScoreLosses();
+					TieBlack = CheckObject.ScoreTies();
+					//this is the end check conditions
+			
+			//Ask user if they would like to continue
+				System.out.print("Would you like to continue? (yes=1, no = 0): ");
+				ContinueBlack = UserInput.nextInt();
+
+			}//end while loop
+		
+		//create new thread to display results
+			
+		System.out.print("The total wins in black jack are : ");  
+		System.out.println(WinsBlack);
+		System.out.print("The total losses in black jack are : ");
+		System.out.println(LoseBlack);
+		System.out.print("The total ties in black jack are : ");
+		System.out.println(TieBlack);
+
+	}
+}
+
+import java.util.Random;
+
+public class RandomNumber
+{
+	int RandomNumber()
+	{
+		int a = 1 + (int)(Math.random()*12);
+		return a;
+	}
+
+	
+}
+
+public class Dice extends RandomNumber
+{
+	int RandomNumber()
+	{
+		int a = 1 + (int)(Math.random()*6);
+		return a;
+	}
+}
+
+public class DoublceDice extends Dice 
+{
+	
+		int RandomNumber()
+		{
+			int a = 1 + (int)(Math.random()*12);
+			return a;
+		}
+		int GetValue()
+		{
+			DoublceDice NumGen = new DoublceDice();
+			return NumGen.RandomNumber();
+		}
+	
+}
+public class Card extends RandomNumber
+{
+	public int a;
+	public int size;
+	Card(int a[])
+	{
+		for (int i= 0 ; i<size; ++i)
+		a[size] = a[i];
+	}
+	void RandomNumber(int a[])
+	{
+		a[size] = 2 + (int)(Math.random()*11);
+
+	}
+}
+
+
+public class CheckConditions implements Runnable 
+{	//initialize variables
+		int WinsBlackJack=0;
+		int LoseBlackJack=0;
+		int TieBlack=0;
+	//start constructor
+		/*CheckConditions()
+		{
+			int WinsBlackJack = 0;
+			int LoseBlackJack = 0;
+			int TieBlack = 0;
+		}*///end constructor
+	//method to check for win or lose
+		void Check (int TotalComputer, int TotalUser)
+		{
+			
+			
+			if (TotalUser>= TotalComputer && TotalUser<21)
+			{
+				WinsBlackJack++;
+				System.out.println("You win!!");
+			}
+			else if (TotalComputer>21 && TotalUser<21)
+			{
+				WinsBlackJack++;
+				System.out.println("You win!");
+		
+			}
+			else if (TotalComputer == TotalUser)
+			{
+				TieBlack++;
+		
+			}
+			else if (TotalComputer <21 && TotalUser > 21)
+			{
+				System.out.println("You Lose!!");
+				LoseBlackJack++;
+		
+			}
+			else if (TotalComputer > TotalUser && TotalComputer==21)
+			{
+				System.out.println("You Lose!!");
+				LoseBlackJack++;
+		
+			}
+			else if (TotalComputer > TotalUser && TotalComputer<21)
+			{
+				System.out.println("You Lose!!");
+				LoseBlackJack++;
+			}
+	}//end method check
+		
+		//new methods to show wins
+				int ScoreWins()
+				{
+					return WinsBlackJack;
+				}//end wins
+			
+			//show losses
+				int ScoreLosses()
+				{
+					return LoseBlackJack;
+				}//end losses
+				
+			//show ties
+				int ScoreTies()
+				{
+					return TieBlack;
+				}//end ties
+				
+	@Override
+	public void run() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+public interface CheckCondBackground 
+{
+	void Check (int TotalComputer, int TotalUser);
+}
