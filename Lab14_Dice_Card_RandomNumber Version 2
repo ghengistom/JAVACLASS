@@ -67,3 +67,4 @@ public class Card implements GameInterface
 	}
 }
 
+//This is correct...sorry..I did not see this version befre...did I?
