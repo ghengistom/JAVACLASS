@@ -58,3 +58,5 @@ public class MainMethodPoly
 	
 	}
 }
+
+// Very close....this needs to be an Interface:  RandomNumberGenerator
