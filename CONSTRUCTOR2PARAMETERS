@@ -74,3 +74,5 @@ class RandomNumber
 
 
 }
+
+// You need RandomNumber(int lo, int hi)
